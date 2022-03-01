@@ -989,17 +989,17 @@ lib.composeManyExtensions [
 
       mypy = super.mypy.overridePythonAttrs (
         old: {
-          patches = (old.patches or [ ]) ++ lib.optionals (lib.strings.versionAtLeast old.version "0.900") [
-            # FIXME: Remove patch after upstream has decided the proper solution.
-            #        https://github.com/python/mypy/pull/11143
-            (pkgs.fetchpatch {
-              url = "https://github.com/python/mypy/commit/f1755259d54330cd087cae763cd5bbbff26e3e8a.patch";
-              sha256 = "sha256-5gPahX2X6+/qUaqDQIGJGvh9lQ2EDtks2cpQutgbOHk=";
-            })
-          ];
-          buildInputs = (old.buildInputs or [ ]) ++ [
-            self.types-typed-ast
-          ];
+          # patches = (old.patches or [ ]) ++ lib.optionals (lib.strings.versionAtLeast old.version "0.900") [
+          #   # FIXME: Remove patch after upstream has decided the proper solution.
+          #   #        https://github.com/python/mypy/pull/11143
+          #   (pkgs.fetchpatch {
+          #     url = "https://github.com/python/mypy/commit/f1755259d54330cd087cae763cd5bbbff26e3e8a.patch";
+          #     sha256 = "sha256-5gPahX2X6+/qUaqDQIGJGvh9lQ2EDtks2cpQutgbOHk=";
+          #   })
+          # ];
+          # buildInputs = (old.buildInputs or [ ]) ++ [
+          #   self.types-typed-ast
+          # ];
           # Compile mypy with mypyc, which makes mypy about 4 times faster. The compiled
           # version is also the default in the wheels on Pypi that include binaries.
           # is64bit: unfortunately the build would exhaust all possible memory on i686-linux.
