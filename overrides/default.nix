@@ -1589,12 +1589,6 @@ lib.composeManyExtensions [
         }
       );
 
-      python-magic = super.python-magic.overridePythonAttrs (
-        old: {
-          pythonImportsCheck = old.pythonImportsCheck or [ ] ++ [ "magic" ];
-        }
-      );
-
       python-olm = super.python-olm.overridePythonAttrs (
         old: {
           buildInputs = old.buildInputs or [ ] ++ [ pkgs.olm ];
