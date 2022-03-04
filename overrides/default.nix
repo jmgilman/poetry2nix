@@ -1594,10 +1594,6 @@ lib.composeManyExtensions [
 
       python-magic = super.python-magic.overridePythonAttrs (
         old: {
-          postPatch = ''
-            substituteInPlace magic/loader.py \
-              --replace "'libmagic.so.1'" "'${lib.getLib pkgs.file}/lib/libmagic.so.1'"
-          '';
           pythonImportsCheck = old.pythonImportsCheck or [ ] ++ [ "magic" ];
         }
       );
