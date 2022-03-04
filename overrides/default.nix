@@ -1536,9 +1536,6 @@ lib.composeManyExtensions [
       pytest = super.pytest.overridePythonAttrs (
         old: {
           # Fixes https://github.com/pytest-dev/pytest/issues/7891
-          postPatch = old.postPatch or "" + ''
-            sed -i '/\[metadata\]/aversion = ${old.version}' setup.cfg
-          '';
         }
       );
 
